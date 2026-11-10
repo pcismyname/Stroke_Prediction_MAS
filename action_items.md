@@ -28,8 +28,8 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | Track | Focus | Owner |
 |-------|-------|-------|
-| 1 | EDA, missing BMI, ethics | |
-| 2 | Distribution fitting, intervals | Chidsanuphong |
+| 1 | EDA, missing BMI, ethics | Win |
+| 2 | Distribution fitting, intervals | Ton |
 | 3 | Imputation + CV pipeline, model (**strongest coder**) | |
 | 4 | Hypotheses and tests, sensitivity analyses | |
 | 5 | Threshold, decision curve, threshold CI | |
