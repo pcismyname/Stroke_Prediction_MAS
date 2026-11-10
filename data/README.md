@@ -1,6 +1,6 @@
 # Data card
 
-Data files are **not committed to git** (see `.gitignore`). The licence restricts the data to educational use, so each person downloads their own copy.
+The primary dataset (`data/raw/healthcare-dataset-stroke-data.csv`, 317 KB) **is committed** so that a fresh clone runs end to end. It is used only for this course, credited to its author below, and must not be reused for other purposes. All other data files (S3E2, interim and processed outputs) are not committed.
 
 ## Datasets
 

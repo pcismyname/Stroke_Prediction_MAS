@@ -24,10 +24,10 @@ SEED = 42
 
 # ---- Analysis constants ----
 N_BOOT = 10_000        # bootstrap resamples for CIs
-N_BOOT_PIPELINE = 1_000  # resamples when bootstrapping the whole pipeline (threshold CI)
+N_BOOT_PIPELINE = 200  # resamples when bootstrapping the whole pipeline (threshold CI)
 N_PERM = 10_000        # permutation test resamples
 N_FOLDS = 5            # stratified k-fold CV
-N_IMPUTATIONS = 20     # multiple imputation datasets (m)
+N_IMPUTATIONS = 5      # multiple imputation datasets (m); raise to 20 if time allows
 ALPHA = 0.05
 
 # Cost ratio R = C_FN / C_FP. The value and its source are still to be

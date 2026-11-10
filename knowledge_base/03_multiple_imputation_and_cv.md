@@ -22,7 +22,7 @@ So we may need two imputation set-ups: one for inference on the full data, and o
 
 ## What to do with m imputed datasets (decide now)
 
-How many: a common rule is m ≥ the percentage of incomplete cases (≈ 4% here), so m = 5 is a floor. We use `N_IMPUTATIONS = 20` in [src/config.py](../src/config.py) for stable pooled SEs.
+How many: a common rule is m ≥ the percentage of incomplete cases (≈ 4% here), so m = 5 is a floor. We use `N_IMPUTATIONS = 5` in [src/config.py](../src/config.py) because of the 2-day timeline; 20 gives more stable pooled SEs if time allows.
 
 **A. Coefficients / odds ratios → Rubin's rules**
 

@@ -49,6 +49,8 @@ data/external/*
 *.7z
 # Keep small sample files, e.g.:
 # !data/sample/*.csv
+# The primary dataset is small (317 KB) and committed so a clone runs end to end.
+!data/raw/healthcare-dataset-stroke-data.csv
 
 # ---- Models & experiment outputs ----
 models/

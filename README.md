@@ -61,7 +61,7 @@ jupyter lab            # or work interactively
 ## Reproducibility
 
 - Random seed: **42** (`SEED` in [src/config.py](src/config.py)). Imputation m uses `SEED + m`.
-- Bootstrap: 10,000 resamples; CV: stratified 5-fold; multiple imputation: m = 20.
+- Bootstrap: 10,000 resamples; CV: stratified 5-fold; multiple imputation: m = 5 (20 if time allows); whole-pipeline bootstrap for the threshold CI: 200 resamples.
 - Tested on Python 3.14.5 with the versions in [requirements.txt](requirements.txt).
 
 ## Team conventions
