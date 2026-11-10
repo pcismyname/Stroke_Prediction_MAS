@@ -31,7 +31,7 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | 1 | EDA, missing BMI, ethics | Win |
 | 2 | Distribution fitting, intervals | Ton |
 | 3 | Imputation + CV pipeline, model (**strongest coder**) | |
-| 4 | Hypotheses and tests, sensitivity analyses | |
+| 4 | Hypotheses and tests, sensitivity analyses | James |
 | 5 | Threshold, decision curve, threshold CI | |
 | 6 | Report, slides, merging, reproducibility | |
 
