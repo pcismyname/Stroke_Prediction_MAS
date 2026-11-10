@@ -29,7 +29,7 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | Track | Focus | Owner |
 |-------|-------|-------|
 | 1 | EDA, missing BMI, ethics | |
-| 2 | Distribution fitting, intervals | |
+| 2 | Distribution fitting, intervals | Chidsanuphong |
 | 3 | Imputation + CV pipeline, model (**strongest coder**) | |
 | 4 | Hypotheses and tests, sensitivity analyses | |
 | 5 | Threshold, decision curve, threshold CI | |
@@ -61,11 +61,11 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| E1 | 🔴 | 1 | Data-generating justification for glucose (log-normal / Gamma / two-population mixture). See [KB 07](knowledge_base/07_distribution_fitting.md). | ⬜ | |
-| E2 | 🔴 | 1 | Fit the 3 candidates; Q–Q plots; parametric-bootstrap Anderson–Darling; AIC/BIC table | ⬜ | |
-| E3 | 🔴 | 1 | "Where the fit breaks and what it means" for the downstream tests | ⬜ | |
-| F1 | 🔴 | 1 | Helpers in `src/stats_utils.py`: stratified bootstrap CI, Wilson CI, Hedges' g, Cliff's δ, risk difference. **Share early, since Tracks 4 and 5 use them.** | ⬜ | |
-| F2 | 🔴 | 2 | Coverage simulation for **one** interval type (e.g. glucose mean or age OR). See [KB 01](knowledge_base/01_confidence_intervals_and_bootstrap.md). | ⬜ | |
+| E1 | 🔴 | 1 | Data-generating justification for glucose (log-normal / Gamma / two-population mixture). See [KB 07](knowledge_base/07_distribution_fitting.md). | ✅ | [03_distribution_glucose](notebooks/03_distribution_glucose.ipynb) |
+| E2 | 🔴 | 1 | Fit the 3 candidates; Q–Q plots; parametric-bootstrap Anderson–Darling; AIC/BIC table | ✅ | [03_distribution_glucose](notebooks/03_distribution_glucose.ipynb), [glucose_qq.png](results/figures/glucose_qq.png) |
+| E3 | 🔴 | 1 | "Where the fit breaks and what it means" for the downstream tests | ✅ | [03_distribution_glucose](notebooks/03_distribution_glucose.ipynb) (last section) |
+| F1 | 🔴 | 1 | Helpers in `src/stats_utils.py`: stratified bootstrap CI, Wilson CI, Hedges' g, Cliff's δ, risk difference. **Share early, since Tracks 4 and 5 use them.** | ✅ | [src/stats_utils.py](src/stats_utils.py) |
+| F2 | 🔴 | 2 | Coverage simulation for **one** interval type (e.g. glucose mean or age OR). See [KB 01](knowledge_base/01_confidence_intervals_and_bootstrap.md). | ✅ | [04_estimation](notebooks/04_estimation.ipynb), [coverage_simulation.png](results/figures/coverage_simulation.png) |
 | F3 | 🔴 | 2 | Review every interval sentence in the report (no "95% probability") | ⬜ | |
 | E4 | 🔵 | — | Second variable: BMI, with and without values > 60 | ⬜ | |
 
