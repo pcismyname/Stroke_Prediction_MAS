@@ -49,10 +49,10 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| S2 | 🔴 | 1 | Reproduce the proposal's EDA numbers in `notebooks/01_eda.ipynb` (5,110 rows, 249 strokes, 201 missing BMI, 19.9% vs 4.3%, glucose histogram) | ⬜ | |
-| D1 | 🔴 | 1 | Compare the missing-BMI and recorded-BMI groups (age, glucose, hypertension, heart disease, work type) with CIs; model `bmi_missing ~ covariates`. See [KB 04](knowledge_base/04_missing_data_mechanisms.md). | ⬜ | |
-| D2 | 🔴 | 1 | Model `stroke ~ bmi_missing + covariates`: does the 4× excess survive adjustment? Interpret MAR vs MNAR / reverse causation. | ⬜ | |
-| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ⬜ | |
+| S2 | 🔴 | 1 | Reproduce the proposal's EDA numbers in `notebooks/01_eda.ipynb` (5,110 rows, 249 strokes, 201 missing BMI, 19.9% vs 4.3%, glucose histogram) | ✅ | [01_eda.ipynb](notebooks/01_eda.ipynb) |
+| D1 | 🔴 | 1 | Compare the missing-BMI and recorded-BMI groups (age, glucose, hypertension, heart disease, work type) with CIs; model `bmi_missing ~ covariates`. See [KB 04](knowledge_base/04_missing_data_mechanisms.md). | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
+| D2 | 🔴 | 1 | Model `stroke ~ bmi_missing + covariates`: does the 4× excess survive adjustment? Interpret MAR vs MNAR / reverse causation. | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
+| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ⛔ | Waiting on Track 3 (B1) |
 | D3 | 🔵 | 2 | Delta-adjustment sensitivity (δ = −5…+5) on the BMI OR | ⬜ | |
 | H1 | 🔴 | 2 | Fill in the before/after column of the cleaning log in [data/README.md](data/README.md) | ⬜ | |
 | H3 | 🔴 | 2 | Ethics section, 2–3 paragraphs (licence, id removed, exclusions, disparities) | ⬜ | |
