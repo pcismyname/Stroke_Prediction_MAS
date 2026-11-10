@@ -1,0 +1,4 @@
+hypothesis,test,p_raw,p_holm
+P1 glucose,Mann–Whitney U,3.6403672710893244e-09,3.6403672710893244e-09
+P2 hypertension,χ² (no continuity correction),6.068123323489796e-20,1.2136246646979593e-19
+P3 age,"LR test, one-sided",1.1880941370370228e-83,3.5642824111110684e-83

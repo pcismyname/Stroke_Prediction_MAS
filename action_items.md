@@ -87,8 +87,8 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
 | C2 | 🔴 | 1 | Run the decision-relevant tests from C1, with assumption checks, effect sizes and CIs. See [KB 09](knowledge_base/09_hypothesis_tests_and_effect_sizes.md). | ⬜ | |
-| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | ⬜ | |
-| C3 | 🔴 | 2 | Original proposal hypotheses P1–P3, run quickly as an appendix item | ⬜ | |
+| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | 🟡 | P1–P3 logged with Holm; H1/H2 to follow |
+| C3 | 🔴 | 2 | Original proposal hypotheses P1–P3, run quickly as an appendix item | ✅ | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb) |
 | G5 | 🔴 | 2 | Sensitivity: adults-only (exclude < 18) vs full data | ⬜ | |
 | H2 | 🔴 | 2 | One table: FN rate, FP rate, PPV by age group and gender, with CIs | ⬜ | |
 
