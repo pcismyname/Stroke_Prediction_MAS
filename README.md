@@ -25,7 +25,7 @@ Course project for **Modern Applied Statistics for Data Science** (Dr Sein Minn,
 ├── requirements.txt     # pinned package versions
 ├── data/                # NOT in git; see data/README.md to download
 │   ├── raw/             # original CSV, never edited
-│   ├── external/        # Kaggle Playground S3E2 (synthetic)
+│   ├── external/        # other source data (none currently)
 │   ├── interim/         # intermediate outputs (e.g. imputed datasets)
 │   └── processed/       # analysis-ready tables
 ├── docs/                # proposal, grading criteria, feedback, hypotheses
