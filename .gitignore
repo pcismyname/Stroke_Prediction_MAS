@@ -1,0 +1,87 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+.conda/
+conda-env/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+.jupyter/
+
+# ---- Data (keep raw data out of git; add exceptions below if needed) ----
+data/raw/
+data/interim/
+data/processed/
+data/external/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.zip
+*.gz
+*.tar
+*.7z
+# Keep small sample files, e.g.:
+# !data/sample/*.csv
+
+# ---- Models & experiment outputs ----
+models/
+*.joblib
+*.sav
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.keras
+mlruns/
+wandb/
+lightning_logs/
+outputs/
+logs/
+catboost_info/
+
+# ---- Environment & secrets ----
+.env
+.env.*
+*.key
+secrets.*
+
+# ---- Testing / tooling caches ----
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ---- IDE / OS ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
