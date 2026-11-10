@@ -25,10 +25,12 @@ ipython_config.py
 .jupyter/
 
 # ---- Data (keep raw data out of git; add exceptions below if needed) ----
-data/raw/
-data/interim/
-data/processed/
-data/external/
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+!data/**/.gitkeep
+!data/README.md
 *.csv
 *.tsv
 *.xlsx
@@ -62,6 +64,8 @@ wandb/
 lightning_logs/
 outputs/
 logs/
+# results/ is committed on purpose: figures and tables back the report.
+# Large intermediate files belong in data/interim instead.
 catboost_info/
 
 # ---- Environment & secrets ----

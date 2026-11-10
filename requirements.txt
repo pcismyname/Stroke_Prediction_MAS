@@ -1,0 +1,13 @@
+# Tested with Python 3.14.5 on 2026-11-10.
+# If you add a package, pin its exact version here (pip freeze | grep <name>).
+numpy==2.5.4
+pandas==3.1.1
+scipy==1.18.1
+statsmodels==0.15.0
+patsy==1.0.3
+scikit-learn==1.9.1
+matplotlib==3.11.2
+seaborn==0.13.2
+jupyterlab==4.6.6
+ipykernel==7.4.0
+nbconvert==7.17.2
