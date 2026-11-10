@@ -86,6 +86,7 @@ Every decision that changes the data goes here, with a reason and a pointer to t
 | 4 | Gender "Other": excluded from gender comparisons only | One record can't support a group estimate | 1 | TODO |
 | 5 | BMI > 60: kept; fit reported with and without | Not removed to force a distribution | 13 | TODO |
 | 6 | Under-18s: main analysis and adults-only sensitivity analysis | 856 patients, only 2 strokes | 856 | TODO |
+| 7 | `work_type`: `children` and `Never_worked` combined, only in the χ² test and logistic models of `notebooks/02_missing_bmi.ipynb` | `Never_worked` has no strokes and no missing BMI, so its coefficient cannot be estimated | 709 | All five levels are kept in `results/tables/missing_bmi_categorical_comparison.csv` |
 
 ## Known limitations
 - The original data source and population are undisclosed, so estimates can't be generalised to a specific clinic or country.

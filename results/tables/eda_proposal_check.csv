@@ -1,0 +1,26 @@
+item,proposal,reproduced,match
+Rows,5110.0,5110.0,True
+Strokes,249.0,249.0,True
+"Stroke rate, %",4.87,4.87,True
+BMI missing,201.0,201.0,True
+"BMI missing, %",3.9,3.9,True
+"Stroke rate, BMI missing, %",19.9,19.9,True
+"Stroke rate, BMI recorded, %",4.3,4.3,True
+Strokes among BMI missing,40.0,40.0,True
+"Share of strokes lost if dropped, %",16.0,16.0,True
+Smoking: never smoked,1892.0,1892.0,True
+Smoking: formerly smoked,885.0,885.0,True
+Smoking: smokes,789.0,789.0,True
+Smoking: Unknown,1544.0,1544.0,True
+"Smoking Unknown, %",30.2,30.2,True
+Patients under 18,856.0,856.0,True
+"Patients under 18, %",16.8,16.8,True
+Strokes under 18,2.0,2.0,True
+Gender 'Other',1.0,1.0,True
+BMI > 60,13.0,13.0,True
+BMI maximum,97.6,97.6,True
+BMI minimum,10.3,10.3,True
+Age maximum,82.0,82.0,True
+Age minimum,0.08,0.08,True
+Glucose minimum,55.0,55.0,True
+Glucose maximum,272.0,272.0,True
