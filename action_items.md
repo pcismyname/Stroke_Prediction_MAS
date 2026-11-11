@@ -33,7 +33,7 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | 3 | Imputation + CV pipeline, model (**strongest coder**) | |
 | 4 | Hypotheses and tests, sensitivity analyses | James |
 | 5 | Threshold, decision curve, threshold CI |Nero |
-| 6 | Report, slides, merging, reproducibility | |
+| 6 | Report, slides, merging, reproducibility | Takdanai |
 
 ---
 
