@@ -1,0 +1,6 @@
+patient,gender,age,hypertension,heart_disease,avg_glucose_level,bmi,smoking_status,risk,risk_low,risk_high
+"A: woman, 45, no risk factors",Female,45,0,0,90,27,never smoked,0.01533368597,0.01089317404,0.02154490695
+"B: man, 65, no risk factors",Male,65,0,0,100,28,never smoked,0.06182096027,0.04579997427,0.08295890823
+"C: man, 65, hypertension, smokes",Male,65,1,0,100,28,smokes,0.1187014666,0.07853461276,0.1754991784
+"D: woman, 75, hypertension, glucose 200",Female,75,1,0,200,30,formerly smoked,0.2641323836,0.1923177593,0.3511062988
+"E: man, 80, hypertension + heart disease, glucose 220",Male,80,1,1,220,30,formerly smoked,0.4298740805,0.3195644058,0.5476163879

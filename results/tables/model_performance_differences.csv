@@ -1,0 +1,10 @@
+evaluated_on,comparison,metric,difference,ci_low,ci_high
+All patients,Full model (MI) − Age only,auc,0.005670831474,-0.0009777484423,0.01257004355
+All patients,Full model (MI) − Age only,scaled_brier,-0.001135009375,-0.01282534881,0.01116338484
+All patients,Full model (MI) − Age only,brier,5.262150435e-05,-0.0005175588124,0.0005946110785
+All patients,Full model (MI) + BMI-missing indicator − Full model (MI),auc,0.009974052589,0.003648834019,0.01664197944
+All patients,Full model (MI) + BMI-missing indicator − Full model (MI),scaled_brier,0.01241799386,-0.00397933013,0.02918622197
+All patients,Full model (MI) + BMI-missing indicator − Full model (MI),brier,-0.0005757252163,-0.001353136759,0.0001844904037
+BMI recorded only,Full model (complete case) − Full model (MI),auc,0.0007667313925,-0.002850194127,0.004232983502
+BMI recorded only,Full model (complete case) − Full model (MI),scaled_brier,0.003041916854,-0.002524765699,0.008531781035
+BMI recorded only,Full model (complete case) − Full model (MI),brier,-0.000124019496,-0.0003478422438,0.0001029351506
