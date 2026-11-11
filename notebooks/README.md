@@ -4,8 +4,8 @@
 
 | Notebook | Content | Action items |
 |----------|---------|--------------|
-| `01_eda.ipynb` | Data overview, missingness, figures for the report | S2, D1 |
-| `02_missing_bmi.ipynb` | Why missing BMI has 4× the stroke rate | D1–D3 |
+| `01_eda.ipynb` | Data overview, missingness, figures for the report, before/after of cleaning decisions | S2, H1 |
+| `02_missing_bmi.ipynb` | Why missing BMI has 4× the stroke rate; indicator decision; delta adjustment | D1–D4 |
 | `03_distribution_glucose.ipynb` | Log-normal / Gamma / mixture fit | E1–E3 |
 | `04_estimation.ipynb` | Intervals + coverage simulation | F1–F3 |
 | `05_hypothesis_tests.ipynb` | Pre-registered tests | C1–C3 |

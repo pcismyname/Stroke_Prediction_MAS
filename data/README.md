@@ -78,16 +78,16 @@ Never hand-edit anything in `interim/` or `processed/`. Change the code and re-r
 
 Every decision that changes the data goes here, with a reason and a pointer to the before/after comparison. Add rows as you make decisions.
 
-| # | Decision | Reason | Rows affected | Before/after reported in |
+| # | Decision | Reason | Rows affected | Before/after (as analysed vs alternative) |
 |---|----------|--------|---------------|--------------------------|
-| 1 | Drop `id` | Only per-record identifier; no analytic use | all | — |
-| 2 | Keep smoking "Unknown" as its own category | Retains 30% of records; the dataset defines it as unavailable | 1,544 | TODO |
-| 3 | BMI missing: complete-case **and** multiple imputation, both reported | Missingness is not random (19.9% vs 4.3% stroke rate) | 201 | TODO |
-| 4 | Gender "Other": excluded from gender comparisons only | One record can't support a group estimate | 1 | TODO |
-| 5 | BMI > 60: kept; fit reported with and without | Not removed to force a distribution | 13 | TODO |
-| 6 | Under-18s: main analysis and adults-only sensitivity analysis | 856 patients, only 2 strokes | 856 | TODO |
+| 1 | Drop `id` | Only per-record identifier; no analytic use | all | No estimate uses `id`, so nothing changes. Dropped in `src/data.py` (`load_raw`) |
+| 2 | Keep smoking "Unknown" as its own category | Retains 30% of records; the dataset defines it as unavailable | 1,544 | Dropping them would lose 47 of 249 strokes. OR smokes vs never 1.46 (0.96 to 2.22) kept vs 1.48 (0.97 to 2.25) dropped; hypertension 1.68 vs 1.76. `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1) |
+| 3 | BMI missing: complete-case **and** multiple imputation, both reported | Missingness is not random (19.9% vs 4.3% stroke rate) | 201 | Complete case loses 40 of 249 strokes. OR (MI vs CC): BMI 0.99 vs 1.02, hypertension 1.49 vs 1.68, age 2.00 vs 1.99. MNAR shift ±5 kg/m² keeps BMI OR 0.93 to 1.05. `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1); `06_model.ipynb` (B3); `02_missing_bmi.ipynb` (D3) |
+| 4 | Gender "Other": excluded from gender comparisons only | One record can't support a group estimate | 1 | The record has no stroke; stroke rate 4.87% with or without it. `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1) |
+| 5 | BMI > 60: kept; fit reported with and without | Not removed to force a distribution | 13 | None of the 13 had a stroke. Mean BMI 28.89 kept vs 28.79 removed; BMI OR 1.02 (0.91 to 1.14) vs 1.03 (0.91 to 1.16). `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1). Distribution fit with and without is Track 2's E4 |
+| 6 | Under-18s: main analysis and adults-only sensitivity analysis | 856 patients, only 2 strokes | 856 | Stroke rate 4.87% all vs 5.81% adults only. ORs: age 1.99 vs 1.99, hypertension 1.68 vs 1.68, BMI 1.02 vs 1.01. `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1). Referral-model performance adults-only is Track 4's G5 |
 | 7 | `work_type`: `children` and `Never_worked` combined, only in the χ² test and logistic models of `notebooks/02_missing_bmi.ipynb` | `Never_worked` has no strokes and no missing BMI, so its coefficient cannot be estimated | 709 | All five levels are kept in `results/tables/missing_bmi_categorical_comparison.csv` |
-| 8 | Gender "Other": excluded from the referral model (`src/modeling.py`, `prepare()`) | Gender is a model predictor; one record cannot support a coefficient | 1 | Modelling n = 5,109 (249 strokes, unchanged); `notebooks/06_model.ipynb` |
+| 8 | Gender "Other": excluded from the referral model (`src/modeling.py`, `prepare()`) | Gender is a model predictor; one record cannot support a coefficient | 1 | Modelling n = 5,109 (249 strokes, unchanged); `notebooks/06_model.ipynb`; `results/tables/cleaning_before_after.csv` (`notebooks/01_eda.ipynb`, H1) |
 
 ## Known limitations
 - The original data source and population are undisclosed, so estimates can't be generalised to a specific clinic or country.
