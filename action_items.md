@@ -86,10 +86,10 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| C2 | 🔴 | 1 | Run the decision-relevant tests from C1, with assumption checks, effect sizes and CIs. See [KB 09](knowledge_base/09_hypothesis_tests_and_effect_sizes.md). | ⬜ | |
-| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | 🟡 | P1–P3 logged with Holm; H1/H2 to follow |
+| C2 | 🔴 | 1 | Run the decision-relevant tests from C1, with assumption checks, effect sizes and CIs. See [KB 09](knowledge_base/09_hypothesis_tests_and_effect_sizes.md). | 🟡 | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb), [hyp_h1.csv](results/tables/hyp_h1.csv), [hyp_h5.csv](results/tables/hyp_h5.csv). H1 LR test + ΔAUC and H5 done; ΔNB and H2 wait for R (A1) |
+| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | 🟡 | P1–P3, H1, H5, G5 logged; Holm across H1 + H2 once H2 runs |
 | C3 | 🔴 | 2 | Original proposal hypotheses P1–P3, run quickly as an appendix item | ✅ | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb) |
-| G5 | 🔴 | 2 | Sensitivity: adults-only (exclude < 18) vs full data | ⬜ | |
+| G5 | 🔴 | 2 | Sensitivity: adults-only (exclude < 18) vs full data | 🟡 | [hyp_h1.csv](results/tables/hyp_h1.csv) (G5 row). H1 part done; H2 part waits for R |
 | H2 | 🔴 | 2 | One table: FN rate, FP rate, PPV by age group and gender, with CIs | ⬜ | |
 
 ## Track 5: Threshold and decision · Criteria 1, 4, 6 · Professor F1, F5

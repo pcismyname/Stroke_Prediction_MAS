@@ -1,0 +1,2 @@
+hypothesis,n,events,events_per_param,OR_per_50,profile_ci_low,profile_ci_high,wald_ci_low,wald_ci_high,lr_stat,lr_df,p_value
+"H5 glucose, age >= 60",1376,181,36.2,1.2217569482437642,1.0711959399743465,1.3910801698608795,1.0722959315645801,1.392050456076351,8.820971340876667,1,0.0029778810646465086
