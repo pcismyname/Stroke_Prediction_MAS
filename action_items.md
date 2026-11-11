@@ -52,10 +52,10 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | S2 | 🔴 | 1 | Reproduce the proposal's EDA numbers in `notebooks/01_eda.ipynb` (5,110 rows, 249 strokes, 201 missing BMI, 19.9% vs 4.3%, glucose histogram) | ✅ | [01_eda.ipynb](notebooks/01_eda.ipynb) |
 | D1 | 🔴 | 1 | Compare the missing-BMI and recorded-BMI groups (age, glucose, hypertension, heart disease, work type) with CIs; model `bmi_missing ~ covariates`. See [KB 04](knowledge_base/04_missing_data_mechanisms.md). | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
 | D2 | 🔴 | 1 | Model `stroke ~ bmi_missing + covariates`: does the 4× excess survive adjustment? Interpret MAR vs MNAR / reverse causation. | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
-| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ⬜ | Unblocked: numbers in 06_model, section G2 (AUC +0.010 with indicator) |
-| D3 | 🔵 | 2 | Delta-adjustment sensitivity (δ = −5…+5) on the BMI OR | ⬜ | |
-| H1 | 🔴 | 2 | Fill in the before/after column of the cleaning log in [data/README.md](data/README.md) | ⬜ | |
-| H3 | 🔴 | 2 | Ethics section, 2–3 paragraphs (licence, id removed, exclusions, disparities) | ⬜ | |
+| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) (D4), [missing_bmi_indicator_auc.csv](results/tables/missing_bmi_indicator_auc.csv), [missing_bmi_indicator_calibration.png](results/figures/missing_bmi_indicator_calibration.png) |
+| D3 | 🔵 | 2 | Delta-adjustment sensitivity (δ = −5…+5) on the BMI OR | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) (D3), [missing_bmi_delta_adjustment.csv](results/tables/missing_bmi_delta_adjustment.csv), [missing_bmi_delta_adjustment.png](results/figures/missing_bmi_delta_adjustment.png) |
+| H1 | 🔴 | 2 | Fill in the before/after column of the cleaning log in [data/README.md](data/README.md) | ✅ | [data/README.md](data/README.md), [01_eda.ipynb](notebooks/01_eda.ipynb) (H1), [cleaning_before_after.csv](results/tables/cleaning_before_after.csv) |
+| H3 | 🔴 | 2 | Ethics section, 2–3 paragraphs (licence, id removed, exclusions, disparities) | 🟡 | [reports/ethics_section.md](reports/ethics_section.md). Drafted; one sentence waits for H2 numbers (Track 4) |
 
 ## Track 2: Distribution and intervals · Criteria 3, 4
 

@@ -1,0 +1,17 @@
+decision,short_name,quantity,as_analysed,alternative,alternative_is
+2,Smoking Unknown kept,Rows available,"5,109 rows, 249 strokes (4.87%)","3,565 rows, 202 strokes (5.67%)",Rows with smoking Unknown dropped
+2,Smoking Unknown kept,Model fitted on,"4,908 patients, 209 strokes","3,425 patients, 180 strokes",Rows with smoking Unknown dropped
+2,Smoking Unknown kept,"OR, smokes vs never",1.46 (0.96 to 2.22),1.48 (0.97 to 2.25),Rows with smoking Unknown dropped
+2,Smoking Unknown kept,"OR, hypertension",1.68 (1.19 to 2.36),1.76 (1.23 to 2.52),Rows with smoking Unknown dropped
+3,BMI missing: MI,Model fitted on,"5,109 patients, 249 strokes","4,908 patients, 209 strokes",Complete case (BMI-missing rows dropped)
+3,BMI missing: MI,"OR, BMI per 5 kg/m²",0.99 (0.89 to 1.11),1.02 (0.91 to 1.14),Complete case (BMI-missing rows dropped)
+3,BMI missing: MI,"OR, hypertension",1.49 (1.08 to 2.06),1.68 (1.19 to 2.36),Complete case (BMI-missing rows dropped)
+3,BMI missing: MI,"OR, age per 10 years",2.00 (1.81 to 2.22),1.99 (1.78 to 2.24),Complete case (BMI-missing rows dropped)
+"4, 8",Gender Other excluded,Rows available,"5,109 rows, 249 strokes (4.87%)","5,110 rows, 249 strokes (4.87%)",Record kept
+5,BMI > 60 kept,"Rows with BMI > 60, strokes among them","13 rows, 0 strokes",0 rows,Rows with BMI > 60 removed
+5,BMI > 60 kept,"BMI mean (SD), kg/m²",28.89 (7.85),28.79 (7.56),Rows with BMI > 60 removed
+5,BMI > 60 kept,"OR, BMI per 5 kg/m²",1.02 (0.91 to 1.14),1.03 (0.91 to 1.16),Rows with BMI > 60 removed
+6,Under-18s kept,Rows available,"5,109 rows, 249 strokes (4.87%)","4,253 rows, 247 strokes (5.81%)",Adults only (age 18 and over)
+6,Under-18s kept,"OR, age per 10 years",1.99 (1.78 to 2.24),1.99 (1.77 to 2.25),Adults only (age 18 and over)
+6,Under-18s kept,"OR, hypertension",1.68 (1.19 to 2.36),1.68 (1.19 to 2.36),Adults only (age 18 and over)
+6,Under-18s kept,"OR, BMI per 5 kg/m²",1.02 (0.91 to 1.14),1.01 (0.90 to 1.14),Adults only (age 18 and over)
