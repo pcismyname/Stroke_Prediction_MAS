@@ -43,7 +43,7 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 |----|-----|------|-------|--------|--------|
 | S1 | 🔴 | Clone, create venv, `pip install -r requirements.txt`, download the data (see [data/README.md](data/README.md)) | all | ⬜ | |
 | A1 | 🔴 | **Choose the cost ratio R = C_FN / C_FP and its source.** Set `COST_RATIO` in [src/config.py](src/config.py). See [KB 02](knowledge_base/02_cost_ratio_and_threshold.md). | all | ⬜ | |
-| C1 | 🔴 | **Pick 2–3 decision-relevant hypotheses** from [KB 05](knowledge_base/05_decision_relevant_hypotheses.md); write them in [docs/hypotheses.md](docs/hypotheses.md) and **commit before testing** | all | ⬜ | |
+| C1 | 🔴 | **Pick 2–3 decision-relevant hypotheses** from [KB 05](knowledge_base/05_decision_relevant_hypotheses.md); write them in [docs/hypotheses.md](docs/hypotheses.md) and **commit before testing** | all | ✅ | [docs/hypotheses.md](docs/hypotheses.md): H1, H2 main (Holm); H5 + sensitivity in appendix. R still from A1 |
 
 ## Track 1: EDA, missing BMI, ethics · Criteria 2, 7 · Professor F4
 
