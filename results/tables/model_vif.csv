@@ -1,0 +1,10 @@
+predictor,VIF
+Age (per 10 years),1.452372328
+Male (vs female),1.021561109
+Heart disease,1.098185753
+Hypertension,1.108033109
+Glucose (per 50 mg/dL),1.100165021
+BMI (per 5 kg/m²),1.178593173
+Formerly smoked (vs never),1.236056983
+Smokes (vs never),1.194351317
+Smoking unknown (vs never),1.440622336

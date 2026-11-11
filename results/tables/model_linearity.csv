@@ -1,0 +1,4 @@
+predictor,data,lr_chi2,df,p,p_imputed_min,p_imputed_max
+Age (per 10 years),"Complete case (n = 4,908)",5.008252817,3,0.171193829,0.05318058549,0.05976026091
+Glucose (per 50 mg/dL),"Complete case (n = 4,908)",0.4282572017,3,0.9343453059,0.7999484205,0.8227670723
+BMI (per 5 kg/m²),"Complete case (n = 4,908)",1.671710174,3,0.6432414768,0.4807942902,0.7737910782

@@ -52,7 +52,7 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 | S2 | 🔴 | 1 | Reproduce the proposal's EDA numbers in `notebooks/01_eda.ipynb` (5,110 rows, 249 strokes, 201 missing BMI, 19.9% vs 4.3%, glucose histogram) | ✅ | [01_eda.ipynb](notebooks/01_eda.ipynb) |
 | D1 | 🔴 | 1 | Compare the missing-BMI and recorded-BMI groups (age, glucose, hypertension, heart disease, work type) with CIs; model `bmi_missing ~ covariates`. See [KB 04](knowledge_base/04_missing_data_mechanisms.md). | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
 | D2 | 🔴 | 1 | Model `stroke ~ bmi_missing + covariates`: does the 4× excess survive adjustment? Interpret MAR vs MNAR / reverse causation. | ✅ | [02_missing_bmi.ipynb](notebooks/02_missing_bmi.ipynb) |
-| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ⛔ | Waiting on Track 3 (B1) |
+| D4 | 🔴 | 1 | Paragraph: why no missing-indicator in the referral model (report AUC with and without it; needs Track 3) | ⬜ | Unblocked: numbers in 06_model, section G2 (AUC +0.010 with indicator) |
 | D3 | 🔵 | 2 | Delta-adjustment sensitivity (δ = −5…+5) on the BMI OR | ⬜ | |
 | H1 | 🔴 | 2 | Fill in the before/after column of the cleaning log in [data/README.md](data/README.md) | ⬜ | |
 | H3 | 🔴 | 2 | Ethics section, 2–3 paragraphs (licence, id removed, exclusions, disparities) | ⬜ | |
@@ -73,14 +73,14 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| B0 | 🔴 | 1 | **By ~14:00:** simple complete-case logistic model, stratified 5-fold, save out-of-fold predictions to `data/interim/oof_simple.csv` for Track 5 | ⬜ | |
-| B1 | 🔴 | 1 | Full pipeline: split → impute on the training fold → fit → predict the test fold; average predictions over m imputations. Use m = 5 for speed (20 if time allows). See [KB 03](knowledge_base/03_multiple_imputation_and_cv.md). | ⬜ | |
-| G1 | 🔴 | 1–2 | Logistic regression (statsmodels), Rubin's-rules ORs in clinical units (per 10 yrs, per 50 mg/dL, per 5 kg/m²) + absolute risk for example patients | ⬜ | |
-| G2 | 🔴 | 2 | Baselines: intercept-only and age-only | ⬜ | |
-| G4 | 🔴 | 2 | Calibration: reliability diagram, calibration intercept/slope, Brier (out of fold). See [KB 08](knowledge_base/08_logistic_regression_and_calibration.md). | ⬜ | |
-| B2 | 🔴 | 2 | Methods paragraph on the pooling decision (Rubin's rules for ORs; averaged predictions for performance) | ⬜ | |
-| B3 | 🔴 | 2 | Complete-case vs MI ORs side by side | ⬜ | |
-| G3 | 🔵 | 2 | Diagnostics: spline linearity check + influence (skip VIF / separation if short on time) | ⬜ | |
+| B0 | 🔴 | 1 | **By ~14:00:** simple complete-case logistic model, stratified 5-fold, save out-of-fold predictions to `data/interim/oof_simple.csv` for Track 5 | ✅ | [06_model](notebooks/06_model.ipynb), `data/interim/oof_simple.csv` |
+| B1 | 🔴 | 1 | Full pipeline: split → impute on the training fold → fit → predict the test fold; average predictions over m imputations. Use m = 5 for speed (20 if time allows). See [KB 03](knowledge_base/03_multiple_imputation_and_cv.md). | ✅ | [06_model](notebooks/06_model.ipynb), `data/interim/oof_final.csv`, [src/modeling.py](src/modeling.py) |
+| G1 | 🔴 | 1–2 | Logistic regression (statsmodels), Rubin's-rules ORs in clinical units (per 10 yrs, per 50 mg/dL, per 5 kg/m²) + absolute risk for example patients | ✅ | [06_model](notebooks/06_model.ipynb), [model_or_mi.csv](results/tables/model_or_mi.csv), [model_example_patients.csv](results/tables/model_example_patients.csv) |
+| G2 | 🔴 | 2 | Baselines: intercept-only and age-only | ✅ | [06_model](notebooks/06_model.ipynb), [model_performance.csv](results/tables/model_performance.csv) |
+| G4 | 🔴 | 2 | Calibration: reliability diagram, calibration intercept/slope, Brier (out of fold). See [KB 08](knowledge_base/08_logistic_regression_and_calibration.md). | ✅ | [06_model](notebooks/06_model.ipynb), [model_calibration.png](results/figures/model_calibration.png) |
+| B2 | 🔴 | 2 | Methods paragraph on the pooling decision (Rubin's rules for ORs; averaged predictions for performance) | ✅ | [06_model](notebooks/06_model.ipynb) (section B2) |
+| B3 | 🔴 | 2 | Complete-case vs MI ORs side by side | ✅ | [06_model](notebooks/06_model.ipynb), [model_or_forest.png](results/figures/model_or_forest.png) |
+| G3 | 🔵 | 2 | Diagnostics: spline linearity check + influence (skip VIF / separation if short on time) | ✅ | [06_model](notebooks/06_model.ipynb), [model_linearity.png](results/figures/model_linearity.png) |
 
 ## Track 4: Hypothesis tests and sensitivity · Criterion 5 · Professor F3
 

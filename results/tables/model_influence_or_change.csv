@@ -1,0 +1,10 @@
+column,predictor,OR_all,OR_without_top10,pct_change
+age,Age (per 10 years),1.99453998,2.115962366,6.087738907
+male,Male (vs female),0.9888678726,1.02287656,3.439153858
+heart_disease,Heart disease,1.45184639,1.313020573,-9.562018273
+hypertension,Hypertension,1.678077488,1.579482877,-5.875450449
+avg_glucose_level,Glucose (per 50 mg/dL),1.264694011,1.266349181,0.1308751431
+bmi,BMI (per 5 kg/m²),1.017439435,0.9651839631,-5.135978627
+smoke_former,Formerly smoked (vs never),1.059494267,1.07892321,1.833794022
+smoke_current,Smokes (vs never),1.460904286,1.458018175,-0.1975565248
+smoke_unknown,Smoking unknown (vs never),0.8193972902,0.6514410362,-20.49753594
