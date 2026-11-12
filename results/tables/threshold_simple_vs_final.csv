@@ -1,0 +1,3 @@
+predictions,n,strokes,referrals_per_1000,strokes_caught_per_1000,sensitivity,ppv,net_benefit_per_1000,t_hat
+Complete case (oof_simple),4908,209,264.6699267,31.98859006,0.7511961722,0.1208622017,20.35452323,0.0375
+MI (oof_final),4908,209,292.5835371,33.21108394,0.7799043062,0.1135097493,20.24246129,0.0355

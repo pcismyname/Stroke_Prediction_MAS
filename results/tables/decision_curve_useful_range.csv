@@ -1,0 +1,4 @@
+comparison,threshold_low,threshold_high,R_low,R_high
+Referral model beats refer-all and refer-none,0.005,0.207,3.830917874,199
+Referral model also beats age-only,0.051,0.101,8.900990099,18.60784314
+Age only beats refer-all and refer-none,0.005,0.205,3.87804878,199

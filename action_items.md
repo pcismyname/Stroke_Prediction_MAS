@@ -96,9 +96,9 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| A2 | 🔴 | 1 | Threshold sweep table and plot: PPV, sensitivity, referrals / 1,000, strokes caught / 1,000, expected cost (start on `oof_simple.csv`, swap in the final predictions on day 2) | ⬜ | |
-| A3 | 🔴 | 1 | Decision curve: net benefit for model, age-only, refer-all, refer-none, across the cost-ratio range | ⬜ | |
-| A4 | 🔴 | 2 | Bootstrap CI for the recommended threshold + cost-curve flatness band. **Use B ≈ 200 and m = 5 to keep the runtime manageable, and state that in the report.** See [KB 06](knowledge_base/06_threshold_uncertainty.md). | ⬜ | |
+| A2 | 🔴 | 1 | Threshold sweep table and plot: PPV, sensitivity, referrals / 1,000, strokes caught / 1,000, expected cost (start on `oof_simple.csv`, swap in the final predictions on day 2) | ✅ | [07_threshold_decision](notebooks/07_threshold_decision.ipynb), [threshold_operating_points.csv](results/tables/threshold_operating_points.csv), [threshold_sweep.png](results/figures/threshold_sweep.png). R = 20: 302 referrals / 1,000, 198 of 249 strokes caught, 7.8 referrals per stroke caught |
+| A3 | 🔴 | 1 | Decision curve: net benefit for model, age-only, refer-all, refer-none, across the cost-ratio range | ✅ | [07_threshold_decision](notebooks/07_threshold_decision.ipynb), [decision_curve.png](results/figures/decision_curve.png), [decision_curve_summary.csv](results/tables/decision_curve_summary.csv). Model beats refer-all/none for p* 0.5–20.7% (R ≈ 4–199); ≈ age-only throughout |
+| A4 | 🔴 | 2 | Bootstrap CI for the recommended threshold + cost-curve flatness band. **Use B ≈ 200 and m = 5 to keep the runtime manageable, and state that in the report.** See [KB 06](knowledge_base/06_threshold_uncertainty.md). | ✅ | [07_threshold_decision](notebooks/07_threshold_decision.ipynb), [threshold_ci.csv](results/tables/threshold_ci.csv), [threshold_uncertainty.png](results/figures/threshold_uncertainty.png). t̂ = 3.6%, 95% CI 2.9–6.5% (B = 200, m = 5), contains p* = 4.8%. Report text: [reports/threshold_section.md](reports/threshold_section.md) |
 
 ## Track 6: Report, slides, reproducibility · Criteria 1, 8
 
