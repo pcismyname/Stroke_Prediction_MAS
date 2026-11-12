@@ -86,11 +86,11 @@ Background reading: [knowledge_base/](knowledge_base/README.md) · Professor com
 
 | ID | Pri | Day | Task | Status | Output |
 |----|-----|-----|------|--------|--------|
-| C2 | 🔴 | 1 | Run the decision-relevant tests from C1, with assumption checks, effect sizes and CIs. See [KB 09](knowledge_base/09_hypothesis_tests_and_effect_sizes.md). | 🟡 | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb), [hyp_h1.csv](results/tables/hyp_h1.csv), [hyp_h5.csv](results/tables/hyp_h5.csv). H1 LR test + ΔAUC and H5 done; ΔNB and H2 wait for R (A1) |
-| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | 🟡 | P1–P3, H1, H5, G5 logged; Holm across H1 + H2 once H2 runs |
+| C2 | 🔴 | 1 | Run the decision-relevant tests from C1, with assumption checks, effect sizes and CIs. See [KB 09](knowledge_base/09_hypothesis_tests_and_effect_sizes.md). | ✅ | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb) (H1, H5), [08_fairness](notebooks/08_fairness.ipynb) (H2); [hyp_h1.csv](results/tables/hyp_h1.csv), [hyp_h1_delta_nb.csv](results/tables/hyp_h1_delta_nb.csv), [hyp_h2.csv](results/tables/hyp_h2.csv), [hyp_h5.csv](results/tables/hyp_h5.csv). H2 rejected (+24.4 net strokes / 1,000); H1 LR test rejected but ΔNB CI includes 0, so its registered decision rule is not met |
+| C4 | 🔴 | 1–2 | Keep [results/test_log.md](results/test_log.md) complete; Holm correction across the family | ✅ | All Track 4 tests logged; Holm across H1 + H2 in [hyp_h1_h2_holm.csv](results/tables/hyp_h1_h2_holm.csv) (both rejected) |
 | C3 | 🔴 | 2 | Original proposal hypotheses P1–P3, run quickly as an appendix item | ✅ | [05_hypothesis_tests](notebooks/05_hypothesis_tests.ipynb) |
-| G5 | 🔴 | 2 | Sensitivity: adults-only (exclude < 18) vs full data | 🟡 | [hyp_h1.csv](results/tables/hyp_h1.csv) (G5 row). H1 part done; H2 part waits for R |
-| H2 | 🔴 | 2 | One table: FN rate, FP rate, PPV by age group and gender, with CIs | ⬜ | |
+| G5 | 🔴 | 2 | Sensitivity: adults-only (exclude < 18) vs full data | ✅ | [hyp_h1.csv](results/tables/hyp_h1.csv), [hyp_h1_delta_nb.csv](results/tables/hyp_h1_delta_nb.csv), [hyp_h2.csv](results/tables/hyp_h2.csv) (G5 rows). Same conclusions in adults |
+| H2 | 🔴 | 2 | One table: FN rate, FP rate, PPV by age group and gender, with CIs | ✅ | [08_fairness](notebooks/08_fairness.ipynb), [fairness_error_rates.csv](results/tables/fairness_error_rates.csv), [fairness_error_rate_diffs.csv](results/tables/fairness_error_rate_diffs.csv), [fairness_error_rates.png](results/figures/fairness_error_rates.png). Under 60 the model misses 50 of 68 strokes |
 
 ## Track 5: Threshold and decision · Criteria 1, 4, 6 · Professor F1, F5
 

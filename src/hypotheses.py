@@ -1,8 +1,9 @@
 """Track 4: decision-relevant hypothesis tests registered in docs/hypotheses.md.
 
 Used by notebooks/05_hypothesis_tests.ipynb (H1, H5, G5 and the BMI sensitivity
-analysis) and, for H2 and the error-rate table, by a later notebook that reads
-Track 3's out-of-fold predictions.
+analysis) and by notebooks/08_fairness.ipynb (H2, its G5 check, the error-rate
+table and the Holm correction across H1 and H2), which reads Track 3's
+out-of-fold predictions.
 
 Everything here follows the registered entries (2026-11-11):
 
@@ -27,6 +28,7 @@ from sklearn.model_selection import StratifiedKFold
 
 from src.config import ALPHA, N_BOOT, N_FOLDS, SEED, TARGET
 from src.modeling import boot_metrics, fast_auc, prepare
+from src.stats_utils import risk_difference, wilson_ci
 
 GLU_UNIT = 50.0   # mg/dL
 BMI_UNIT = 5.0    # kg/m²
@@ -195,3 +197,149 @@ def risk_at(fit, newdata: pd.DataFrame, alpha: float = ALPHA) -> pd.DataFrame:
     sf = fit.get_prediction(newdata).summary_frame(alpha=alpha)
     return pd.DataFrame({"risk": sf["mean"].to_numpy(), "ci_low": sf["mean_ci_lower"].to_numpy(),
                          "ci_high": sf["mean_ci_upper"].to_numpy()}, index=newdata.index)
+
+
+# ------------------------------------------------- net benefit (needs R)
+#
+# Net benefit at threshold p* (Vickers & Elkin 2006; KB 02):
+#     NB = TP/n − FP/n · p*/(1 − p*),   refer when predicted risk ≥ p*.
+# It is the share of patients who are true referrals, minus the false
+# referrals weighted by how many of them one stroke is worth (1/R).
+# NB × 1,000 = net strokes caught per 1,000 patients.
+# Written as a mean of one number per patient, so a bootstrap resample's NB
+# is just the mean over the resampled patients.
+
+def p_star(R: float) -> float:
+    """Referral threshold for cost ratio R = C_FN / C_FP."""
+    return 1.0 / (1.0 + R)
+
+
+def nb_contrib(y, p, pt: float) -> np.ndarray:
+    """Each patient's contribution to net benefit at threshold pt (NB = the mean of these)."""
+    y = np.asarray(y, int)
+    refer = np.asarray(p, float) >= pt
+    return np.where(refer, np.where(y == 1, 1.0, -pt / (1 - pt)), 0.0)
+
+
+def net_benefit(y, p, pt: float) -> float:
+    return float(nb_contrib(y, p, pt).mean())
+
+
+def strat_boot_means(y, C: np.ndarray, B: int = N_BOOT, seed: int = SEED) -> np.ndarray:
+    """Column means of C over B stratified bootstrap resamples of patients (B × k).
+
+    Same scheme as Track 3's boot_metrics: patients resampled within
+    stroke / no-stroke, so each resample keeps the observed number of strokes;
+    predictions held fixed. Every column uses the same resamples (paired).
+    """
+    y = np.asarray(y, int)
+    C = np.asarray(C, float).reshape(len(y), -1)
+    rng = np.random.default_rng(seed)
+    pos, neg = np.flatnonzero(y == 1), np.flatnonzero(y == 0)
+    out = np.empty((B, C.shape[1]))
+    for b in range(B):
+        idx = np.concatenate([rng.choice(pos, len(pos)), rng.choice(neg, len(neg))])
+        out[b] = C[idx].mean(axis=0)
+    return out
+
+
+def _ci(x: np.ndarray, alpha: float = ALPHA) -> tuple[float, float]:
+    lo, hi = np.quantile(x, [alpha / 2, 1 - alpha / 2])
+    return float(lo), float(hi)
+
+
+def delta_nb(oof: pd.DataFrame, R_values, B: int = N_BOOT, seed: int = SEED) -> pd.DataFrame:
+    """H1 effect size: ΔNB = NB(full) − NB(base) at p* = 1/(1+R), paired stratified bootstrap CI.
+
+    One row per R. NB values are also given per 1,000 patients. `share_le_0`
+    is the share of resamples with ΔNB ≤ 0 (descriptive; H1's test is the LR test).
+    """
+    y = oof[TARGET].to_numpy(int)
+    p0, p1 = oof["p_base"].to_numpy(float), oof["p_full"].to_numpy(float)
+    D = np.column_stack([nb_contrib(y, p1, p_star(R)) - nb_contrib(y, p0, p_star(R)) for R in R_values])
+    boots = strat_boot_means(y, D, B=B, seed=seed)
+    rows = []
+    for j, R in enumerate(R_values):
+        pt = p_star(R)
+        nb0, nb1 = net_benefit(y, p0, pt), net_benefit(y, p1, pt)
+        lo, hi = _ci(boots[:, j])
+        rows.append({"R": R, "p_star": pt, "nb_base": nb0, "nb_full": nb1,
+                     "delta_nb": nb1 - nb0, "delta_nb_low": lo, "delta_nb_high": hi,
+                     "delta_per_1000": 1000 * (nb1 - nb0), "per_1000_low": 1000 * lo,
+                     "per_1000_high": 1000 * hi, "share_le_0": float(np.mean(boots[:, j] <= 0)),
+                     "ci_above_0": lo > 0})
+    return pd.DataFrame(rows)
+
+
+def h2_test(y, p, R_values, B: int = N_BOOT, seed: int = SEED) -> pd.DataFrame:
+    """H2: NB(model) − NB(best default) at p* = 1/(1+R), one-sided paired bootstrap.
+
+    Best default = the larger of refer-all and refer-none (NB = 0), chosen
+    again inside every resample. With stratified resampling the stroke rate is
+    the same in every resample, so the choice never changes within one R.
+    p_one_sided = share of resamples with difference ≤ 0 (as registered).
+    """
+    y = np.asarray(y, int)
+    p = np.asarray(p, float)
+    cols = []
+    for R in R_values:
+        pt = p_star(R)
+        cols += [nb_contrib(y, p, pt), nb_contrib(y, np.ones_like(p), pt)]
+    boots = strat_boot_means(y, np.column_stack(cols), B=B, seed=seed)
+    rows = []
+    for j, R in enumerate(R_values):
+        pt = p_star(R)
+        nb_m, nb_all = net_benefit(y, p, pt), net_benefit(y, np.ones_like(p), pt)
+        best = max(nb_all, 0.0)
+        diff_b = boots[:, 2 * j] - np.maximum(boots[:, 2 * j + 1], 0.0)
+        lo, hi = _ci(diff_b)
+        k = int(np.sum(diff_b <= 0))
+        rows.append({"R": R, "p_star": pt, "n": len(y), "events": int(y.sum()),
+                     "nb_model": nb_m, "nb_refer_all": nb_all, "nb_refer_none": 0.0,
+                     "best_default": "refer all" if nb_all > 0 else "refer none",
+                     "diff": nb_m - best, "diff_low": lo, "diff_high": hi,
+                     "diff_per_1000": 1000 * (nb_m - best), "per_1000_low": 1000 * lo,
+                     "per_1000_high": 1000 * hi, "n_boot_le_0": k, "B": B,
+                     "p_one_sided": k / B})
+    return pd.DataFrame(rows)
+
+
+# ---------------------------------------------------- error-rate table
+
+def error_rates(y, p, pt: float) -> dict:
+    """Counts at threshold pt plus FN rate, FP rate and PPV with Wilson 95% CIs."""
+    y = np.asarray(y, int)
+    refer = np.asarray(p, float) >= pt
+    tp = int(np.sum(refer & (y == 1))); fn = int(np.sum(~refer & (y == 1)))
+    fp = int(np.sum(refer & (y == 0))); tn = int(np.sum(~refer & (y == 0)))
+    out = {"n": len(y), "strokes": tp + fn, "referred": tp + fp, "TP": tp, "FN": fn, "FP": fp, "TN": tn}
+    for name, k, m in (("fn_rate", fn, tp + fn), ("fp_rate", fp, fp + tn), ("ppv", tp, tp + fp)):
+        est, lo, hi = wilson_ci(k, m) if m > 0 else (np.nan, np.nan, np.nan)
+        out.update({name: est, f"{name}_low": lo, f"{name}_high": hi, f"{name}_k": k, f"{name}_m": m})
+    return out
+
+
+def error_rate_table(df: pd.DataFrame, p_col: str, pt: float, groups: dict[str, pd.Series]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Error rates overall and per group, plus the between-group differences (Newcombe 95% CIs).
+
+    `groups` maps a grouping name to a Series of group labels (2 levels each).
+    Returns (rates, differences); differences are level 2 − level 1 in the
+    order the levels appear in sorted order.
+    """
+    y, p = df[TARGET].to_numpy(int), df[p_col].to_numpy(float)
+    rates = [{"grouping": "all", "group": "all", **error_rates(y, p, pt)}]
+    diffs = []
+    for gname, g in groups.items():
+        levels = sorted(pd.unique(g))
+        per = {}
+        for lev in levels:
+            m = (g == lev).to_numpy()
+            per[lev] = error_rates(y[m], p[m], pt)
+            rates.append({"grouping": gname, "group": lev, **per[lev]})
+        a, b = per[levels[0]], per[levels[1]]
+        for name in ("fn_rate", "fp_rate", "ppv"):
+            d, lo, hi = risk_difference(b[f"{name}_k"], b[f"{name}_m"], a[f"{name}_k"], a[f"{name}_m"])
+            diffs.append({"grouping": gname, "metric": name,
+                          "comparison": f"{levels[1]} − {levels[0]}",
+                          "diff": d, "diff_low": lo, "diff_high": hi})
+    return pd.DataFrame(rates), pd.DataFrame(diffs)
