@@ -46,7 +46,7 @@ Candidates and reasoning: [knowledge_base/05_decision_relevant_hypotheses.md](..
 
 Main family for the report: **H1 and H2**, Holm-corrected together (α = 0.05). Appendix: **H5** (secondary) and the sensitivity analyses below. P1–P3 stay a separate Holm family (C3).
 
-**Threshold used throughout:** p\* = 1 / (1 + R), with R = `COST_RATIO` in `src/config.py` (action item A1). R is chosen from the cost reasoning in KB 02, not from these results. Every analysis is repeated over `COST_RATIO_GRID` (5, 10, 20, 50, 100) so the conclusion can be checked at other values of R.
+**Threshold used throughout:** p\* = 1 / (1 + R), with R = `COST_RATIO` in `src/config.py` (action item A1; set to R = 20, p\* = 4.8%, on 2026-11-12, see [cost_ratio.md](cost_ratio.md)). R is chosen from the cost reasoning in KB 02, not from these results. Every analysis is repeated over `COST_RATIO_GRID` (5, 10, 20, 50, 100) so the conclusion can be checked at other values of R.
 
 **Common settings:** `SEED` from `src/config.py`; bootstrap B = 10,000, stratified by stroke; out-of-fold (OOF) predictions from stratified 5-fold CV; the one "Other" gender record excluded (n = 5,109; 249 strokes).
 

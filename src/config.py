@@ -32,9 +32,12 @@ N_FOLDS = 5            # stratified k-fold CV
 N_IMPUTATIONS = 5      # multiple imputation datasets (m); raise to 20 if time allows
 ALPHA = 0.05
 
-# Cost ratio R = C_FN / C_FP. The value and its source are still to be
-# decided (action item A1). Threshold p* = 1 / (1 + R).
-COST_RATIO = None
+# Cost ratio R = C_FN / C_FP (action item A1, decided 2026-11-12).
+# R = 20: we accept 20 unnecessary counselling referrals to catch one stroke.
+# Source: elicitation (a stated judgement, not published costs); see
+# docs/cost_ratio.md. Threshold p* = 1 / (1 + R) = 4.76%, close to the 4.87%
+# base rate. Results are repeated over COST_RATIO_GRID.
+COST_RATIO = 20
 COST_RATIO_GRID = [5, 10, 20, 50, 100]  # for sensitivity analysis
 
 TARGET = "stroke"
