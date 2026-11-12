@@ -1,0 +1,11 @@
+fold,rule,threshold,n,FP,FN,cost
+0,chosen on other folds,0.0355,1022,303,9,483
+0,fixed p* = 1/(1+R),0.04761904762,1022,244,11,464
+1,chosen on other folds,0.043,1022,291,9,471
+1,fixed p* = 1/(1+R),0.04761904762,1022,277,9,457
+2,chosen on other folds,0.0395,1022,321,5,421
+2,fixed p* = 1/(1+R),0.04761904762,1022,273,7,413
+3,chosen on other folds,0.0355,1022,346,5,446
+3,fixed p* = 1/(1+R),0.04761904762,1022,285,9,465
+4,chosen on other folds,0.043,1021,282,11,502
+4,fixed p* = 1/(1+R),0.04761904762,1021,266,15,566
